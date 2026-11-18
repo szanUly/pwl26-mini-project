@@ -60,13 +60,13 @@ Content-Type: application/json
 POST {{base}}/orders
 Content-Type: application/json
 
-{ "productId": 11, "customerName": "Sri Zulaini Ulya - F1D02410096", "quantity": 2 }
+{ "productId": 1, "customerName": "Sri Zulaini Ulya - F1D02410096", "quantity": 2 }
 
 ### 409 - stok tidak cukup
 POST {{base}}/orders
 Content-Type: application/json
 
-{ "productId": 12, "customerName": "Sri Zulaini Ulya - F1D02410096", "quantity": 9999 }
+{ "productId": 2, "customerName": "Sri Zulaini Ulya - F1D02410096", "quantity": 9999 }
 
 ### 404 - produk pesanan tidak ada
 POST {{base}}/orders
@@ -78,7 +78,7 @@ Content-Type: application/json
 POST {{base}}/orders
 Content-Type: application/json
 
-{ "productId": 13, "customerName": "Sri Zulaini Ulya - F1D02410096", "quantity": 0 }
+{ "productId": 3, "customerName": "Sri Zulaini Ulya - F1D02410096", "quantity": 0 }
 
 ### 200 - daftar pesanan beserta relasi produk | Sri Zulaini Ulya - F1D02410096
 GET {{base}}/orders

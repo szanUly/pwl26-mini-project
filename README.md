@@ -368,10 +368,6 @@ Seluruh pengujian dilakukan dengan Postman. Setiap gambar memperlihatkan request
 
 ![Struktur tabel](screenshot/23.png)
 
-**Percobaan rollback**: `throw new Error` setelah `tx.order.create` tidak meninggalkan baris pesanan di basis data.
-
-![Eksperimen rollback](screenshot/24.png)
-
 ## Deklarasi Penggunaan AI
 
 > Catatan untuk diri sendiri: bagian ini dinilai dari kejujuran dan kelengkapan. Sesuaikan isinya dengan hal yang benar-benar saya lakukan, lalu hapus catatan ini.

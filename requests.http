@@ -1,0 +1,90 @@
+@base = http://localhost:3000
+# Identitas: Sri Zulaini Ulya - F1D02410096
+
+### 200 - daftar produk (paginasi + filter) | Sri Zulaini Ulya - F1D02410096
+GET {{base}}/products?page=1&limit=3&category=Aksesoris
+
+### 200 - detail produk | Sri Zulaini Ulya - F1D02410096
+GET {{base}}/products/ID_PRODUK
+
+### 404 - produk tidak ada
+GET {{base}}/products/9999
+
+### 400 - ID bukan angka
+GET {{base}}/products/abc
+
+### 201 - tambah produk
+# @name createProduct
+POST {{base}}/products
+Content-Type: application/json
+
+{ "name": "Headset Sri Zulaini Ulya F1D02410096", "category": "Aksesoris", "price": 200000, "stock": 20 }
+
+### 409 - nama duplikat
+POST {{base}}/products
+Content-Type: application/json
+
+{ "name": "Headset Sri Zulaini Ulya F1D02410096", "category": "Aksesoris", "price": 200000, "stock": 20 }
+
+### 422 - validasi gagal
+POST {{base}}/products
+Content-Type: application/json
+
+{ "name": "A", "category": "Aksesoris", "price": -5, "stock": 20 }
+
+### 400 - body kosong
+POST {{base}}/products
+Content-Type: application/json
+
+{}
+
+### 200 - ubah produk
+PUT {{base}}/products/{{createProduct.response.body.data.id}}
+Content-Type: application/json
+
+{ "name": "Headset Sri Zulaini Ulya F1D02410096 v2", "category": "Aksesoris", "price": 250000, "stock": 15 }
+
+### 404 - ubah produk yang tidak ada
+PUT {{base}}/products/9999
+Content-Type: application/json
+
+{ "name": "Produk Hantu F1D02410096", "category": "Aksesoris", "price": 1000, "stock": 1 }
+
+### 409 - ubah dengan nama yang sudah dipakai produk lain
+PUT {{base}}/products/{{createProduct.response.body.data.id}}
+Content-Type: application/json
+
+{ "name": "Laptop Asus Vivobook", "category": "Aksesoris", "price": 1000, "stock": 1 }
+
+### 201 - buat pesanan (stok berkurang)
+POST {{base}}/orders
+Content-Type: application/json
+
+{ "productId": 11, "customerName": "Sri Zulaini Ulya - F1D02410096", "quantity": 2 }
+
+### 409 - stok tidak cukup
+POST {{base}}/orders
+Content-Type: application/json
+
+{ "productId": 12, "customerName": "Sri Zulaini Ulya - F1D02410096", "quantity": 9999 }
+
+### 404 - produk pesanan tidak ada
+POST {{base}}/orders
+Content-Type: application/json
+
+{ "productId": 9999, "customerName": "Sri Zulaini Ulya - F1D02410096", "quantity": 1 }
+
+### 422 - validasi pesanan gagal (quantity 0)
+POST {{base}}/orders
+Content-Type: application/json
+
+{ "productId": 13, "customerName": "Sri Zulaini Ulya - F1D02410096", "quantity": 0 }
+
+### 200 - daftar pesanan beserta relasi produk | Sri Zulaini Ulya - F1D02410096
+GET {{base}}/orders
+
+### 204 - hapus produk yang tadi dibuat
+DELETE {{base}}/products/{{createProduct.response.body.data.id}}
+
+### 404 - hapus produk yang tidak ada
+DELETE {{base}}/products/9999

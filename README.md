@@ -8,7 +8,7 @@ REST API CRUD berbasis Express.js, MySQL, dan Prisma untuk Mini Project ETS mata
 |---|---|
 | Nama | Sri Zul'aini Ulya |
 | NIM | F1D02410096 |
-| Kelas | C |
+| Kelas | B |
 | Mata Kuliah | Pemrograman Web Lanjut |
 | Kasus yang dipilih | Products API |
 
@@ -270,107 +270,107 @@ Seluruh pengujian dilakukan dengan Postman. Setiap gambar memperlihatkan request
 
 **GET /products dengan paginasi dan filter** (`page=1&limit=3&category=Aksesoris`), status 200.
 
-![GET products 200](screenshot/01-get-products-200.png)
+![GET products 200](screenshot/01.png)
 
 **GET /products/:id**, status 200.
 
-![GET product by id 200](screenshot/02-get-product-by-id-200.png)
+![GET product by id 200](screenshot/02.png)
 
 **POST /products**, status 201.
 
-![POST product 201](screenshot/05-post-product-201.png)
+![POST product 201](screenshot/05.png)
 
 **PUT /products/:id**, status 200.
 
-![PUT product 200](screenshot/09-put-product-200.png)
+![PUT product 200](screenshot/09.png)
 
 **DELETE /products/:id**, status 204.
 
-![DELETE product 204](screenshot/12-delete-product-204.png)
+![DELETE product 204](screenshot/12.png)
 
 ### 2. Products: Gagal
 
 **GET /products/9999** (produk tidak ada), status 404.
 
-![GET product 404](screenshot/03-get-product-404.png)
+![GET product 404](screenshot/03.png)
 
 **GET /products/abc** (ID bukan angka), status 400.
 
-![GET product id invalid 400](screenshot/04-get-product-id-invalid-400.png)
+![GET product id invalid 400](screenshot/04.png)
 
 **POST /products dengan nama duplikat**, status 409.
 
-![POST product duplicate 409](screenshot/06-post-product-duplicate-409.png)
+![POST product duplicate 409](screenshot/06.png)
 
 **POST /products dengan data tidak valid** (nama terlalu pendek dan harga negatif), status 422.
 
-![POST product validasi 422](screenshot/07-post-product-validasi-422.png)
+![POST product validasi 422](screenshot/07.png)
 
 **POST /products dengan body kosong**, status 400.
 
-![POST product body kosong 400](screenshot/08-post-product-body-kosong-400.png)
+![POST product body kosong 400](screenshot/08.png)
 
 **PUT /products/9999** (produk tidak ada), status 404.
 
-![PUT product 404](screenshot/10-put-product-404.png)
+![PUT product 404](screenshot/10.png)
 
 **PUT /products/:id dengan nama milik produk lain**, status 409.
 
-![PUT product duplicate 409](screenshot/11-put-product-duplicate-409.png)
+![PUT product duplicate 409](screenshot/11.png)
 
 **DELETE /products/9999** (produk tidak ada), status 404.
 
-![DELETE product 404](screenshot/13-delete-product-404.png)
+![DELETE product 404](screenshot/13.png)
 
 ### 3. Orders dan Transaksi
 
 **POST /orders berhasil** (pesanan dibuat dan stok berkurang), status 201.
 
-![POST order 201](screenshot/14-post-order-201.png)
+![POST order 201](screenshot/14.png)
 
 **POST /orders dengan stok tidak cukup**, status 409.
 
-![POST order stok 409](screenshot/15-post-order-stok-409.png)
+![POST order stok 409](screenshot/15.png)
 
 **POST /orders dengan produk yang tidak ada**, status 404.
 
-![POST order produk 404](screenshot/16-post-order-produk-404.png)
+![POST order produk 404](screenshot/16.png)
 
 **POST /orders dengan quantity 0**, status 422.
 
-![POST order validasi 422](screenshot/17-post-order-validasi-422.png)
+![POST order validasi 422](screenshot/17.png)
 
 **GET /orders beserta data produk (`include`)**, status 200.
 
-![GET orders include 200](screenshot/18-get-orders-include-200.png)
+![GET orders include 200](screenshot/18.png)
 
 ### 4. Bukti Basis Data (phpMyAdmin)
 
 **Kondisi awal**: stok produk sebelum pesanan dibuat dan tabel `orders` masih kosong.
 
-![DB sebelum order](screenshot/19-db-sebelum-order.png)
+![DB sebelum order](screenshot/19.png)
 
 **Setelah pesanan berhasil**: baris baru muncul di `orders` dan stok produk berkurang sesuai jumlah pesanan.
 
-![DB sesudah order berhasil](screenshot/20-db-sesudah-order-berhasil.png)
+![DB sesudah order berhasil](screenshot/20.png)
 
 **Setelah pesanan gagal (409)**: tabel `products` dan `orders` tidak berubah.
 
-![DB sesudah order gagal](screenshot/21-db-sesudah-order-gagal.png)
+![DB sesudah order gagal](screenshot/21.png)
 
 ### 5. Bukti Tambahan
 
 **Migrasi dan seed** berhasil dijalankan.
 
-![Migrate dan seed](screenshot/22-migrate-seed-terminal.png)
+![Migrate dan seed](screenshot/22.png)
 
 **Struktur tabel** `products` dan `orders` di phpMyAdmin.
 
-![Struktur tabel](screenshot/23-struktur-tabel.png)
+![Struktur tabel](screenshot/23.png)
 
 **Percobaan rollback**: `throw new Error` setelah `tx.order.create` tidak meninggalkan baris pesanan di basis data.
 
-![Eksperimen rollback](screenshot/24-eksperimen-rollback.png)
+![Eksperimen rollback](screenshot/24.png)
 
 ## Deklarasi Penggunaan AI
 
